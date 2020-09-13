@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-class Prdoucts {
+class Prdoucts with ChangeNotifier {
   final String id;
   final String title;
   final String description;
@@ -8,7 +8,16 @@ class Prdoucts {
   final String imageUrl;
   bool isFavorite;
 
-  Prdoucts({@required this.id, @required this.title, 
-  @required this.description, @required this.price, @required this.imageUrl, 
-  this.isFavorite = false });
+  Prdoucts(
+      {@required this.id,
+      @required this.title,
+      @required this.description,
+      @required this.price,
+      @required this.imageUrl,
+      this.isFavorite = false});
+
+  void tooglefavorite() {
+    isFavorite = !isFavorite;
+    notifyListeners();
+  }
 }
